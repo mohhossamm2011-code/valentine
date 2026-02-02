@@ -12,21 +12,16 @@
         button { padding: 10px 25px; font-size: 18px; border: none; border-radius: 10px; cursor: pointer; transition: 0.3s; }
         #yes-btn { background-color: #ff4d6d; color: white; }
         #no-btn { background-color: #888; color: white; position: relative; }
-        img { width: 250px; height: 250px; object-fit: cover; border-radius: 15px; background-color: #eee; }
+        img { width: 250px; height: 250px; object-fit: cover; border-radius: 15px; }
     </style>
 </head>
 <body>
-
-    <audio id="love-music">
-    <source src="love.mp3" type="audio/mpeg">
-</audio>
 
     <div class="container">
         <div id="image-box">
             <img id="main-img" src="./before.jpg" alt="Valentine">
         </div>
         <h1 id="text">Gina ❤️<br>Will you be my Valentine?</h1>
-        
         <div class="buttons">
             <button id="yes-btn" onclick="sayYes()">Yes ❤️</button>
             <button id="no-btn" onmouseover="moveNo()">No 💔</button>
@@ -39,25 +34,13 @@
             btn.style.position = 'fixed'; 
             const x = Math.random() * (window.innerWidth - btn.offsetWidth);
             const y = Math.random() * (window.innerHeight - btn.offsetHeight);
-            btn.style.left = x + 'px';
-            btn.style.top = y + 'px';
+            btn.style.left = x + 'px'; btn.style.top = y + 'px';
         }
 
         function sayYes() {
-            // 1. تغيير النص
             document.getElementById('text').innerHTML = "بحبك ❤️";
-            
-            // 2. إخفاء زرار No
             document.getElementById('no-btn').style.display = 'none';
-            
-            // 3. تغيير الصورة للثانية
             document.getElementById('main-img').src = "./after.jpg";
-            
-            // 4. تشغيل الأغنية فوراً عند الضغط
-            var audio = document.getElementById('love-music');
-            audio.play().catch(function(error) {
-                console.log("التحميل فشل أو المتصفح منع التشغيل التلقائي: ", error);
-            });
         }
     </script>
 </body>
