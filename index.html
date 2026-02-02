@@ -9,21 +9,21 @@
         .container { background: white; padding: 30px; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); text-align: center; min-width: 300px; }
         h1 { color: #ff4d6d; margin: 15px 0; font-size: 24px; }
         .buttons { margin-top: 20px; display: flex; justify-content: center; gap: 20px; height: 50px; align-items: center; }
-        button { padding: 10px 25px; font-size: 18px; border: none; border-radius: 10px; cursor: pointer; }
+        button { padding: 10px 25px; font-size: 18px; border: none; border-radius: 10px; cursor: pointer; transition: 0.3s; }
         #yes-btn { background-color: #ff4d6d; color: white; }
-        #no-btn { background-color: #888; color: white; position: relative; transition: 0.1s; }
-        img { width: 250px; height: 250px; object-fit: cover; border-radius: 15px; }
+        #no-btn { background-color: #888; color: white; position: relative; }
+        img { width: 250px; height: 250px; object-fit: cover; border-radius: 15px; background-color: #eee; }
     </style>
 </head>
 <body>
 
-    <audio id="love-music">
+    <audio id="love-music" preload="auto">
         <source src="music.mp3" type="audio/mpeg">
     </audio>
 
     <div class="container">
         <div id="image-box">
-            <img id="main-img" src="before.png" alt="Valentine">
+            <img id="main-img" src="./before.png" alt="Valentine">
         </div>
         <h1 id="text">Gina ❤️<br>Will you be my Valentine?</h1>
         
@@ -46,13 +46,13 @@
         function sayYes() {
             document.getElementById('text').innerHTML = "بحبك ❤️";
             document.getElementById('no-btn').style.display = 'none';
-            // الصورة الثانية png
-            document.getElementById('main-img').src = "after.png";
+            // تغيير الصورة للثانية
+            document.getElementById('main-img').src = "./after.png";
             
-            // تشغيل أغنية إليسا
+            // تشغيل الصوت
             var audio = document.getElementById('love-music');
             audio.play().catch(function(error) {
-                console.log("حدث خطأ في تشغيل الصوت: " + error);
+                console.log("Audio play failed: ", error);
             });
         }
     </script>
