@@ -44,15 +44,19 @@
         }
 
         function sayYes() {
+            // 1. تغيير النص
             document.getElementById('text').innerHTML = "بحبك ❤️";
+            
+            // 2. إخفاء زرار No
             document.getElementById('no-btn').style.display = 'none';
-            // تغيير الصورة للثانية
+            
+            // 3. تغيير الصورة للثانية
             document.getElementById('main-img').src = "./after.jpg";
             
-            // تشغيل الصوت
+            // 4. تشغيل الأغنية فوراً عند الضغط
             var audio = document.getElementById('love-music');
             audio.play().catch(function(error) {
-                console.log("Audio play failed: ", error);
+                console.log("التحميل فشل أو المتصفح منع التشغيل التلقائي: ", error);
             });
         }
     </script>
