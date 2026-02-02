@@ -30,7 +30,7 @@
             display: flex;
             justify-content: center;
             gap: 20px;
-            height: 50px; /* مساحة ثابتة للزراير */
+            height: 50px;
             align-items: center;
         }
         button {
@@ -44,7 +44,7 @@
         #no-btn { 
             background-color: #888; 
             color: white; 
-            position: relative; /* بيبدأ في مكانه الطبيعي جنب اليس */
+            position: relative;
             transition: 0.1s;
         }
         img { width: 250px; height: 250px; object-fit: cover; border-radius: 15px; }
@@ -52,9 +52,11 @@
 </head>
 <body>
 
+    <audio id="love-music" src="music.mp3"></audio>
+
     <div class="container">
         <div id="image-box">
-            <img id="main-img" src="before.jpg" alt="Valentine">
+            <img id="main-img" src="before.png" alt="Valentine">
         </div>
         <h1 id="text">Gina ❤️<br>Will you be my Valentine?</h1>
         
@@ -67,7 +69,6 @@
     <script>
         function moveNo() {
             const btn = document.getElementById('no-btn');
-            // أول ما الماوس يلمسه يتحول لـ fixed عشان يهرب في كل الشاشة
             btn.style.position = 'fixed'; 
             const x = Math.random() * (window.innerWidth - btn.offsetWidth);
             const y = Math.random() * (window.innerHeight - btn.offsetHeight);
@@ -78,8 +79,11 @@
         function sayYes() {
             document.getElementById('text').innerHTML = "بحبك ❤️";
             document.getElementById('no-btn').style.display = 'none';
-            // الصورة الثانية
-            document.getElementById('main-img').src = "after.jpg";
+            // لاحظ هنا png
+            document.getElementById('main-img').src = "after.png";
+            
+            var audio = document.getElementById('love-music');
+            audio.play();
         }
     </script>
 
