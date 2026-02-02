@@ -1,84 +1,95 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar">
 <head>
-  <meta charset="UTF-8">
-  <title>For Gina ❤️</title>
-  <style>
-    body {
-      background: linear-gradient(135deg, #ffd1dc, #ffe6f0);
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-family: Arial, sans-serif;
-      margin: 0;
-    }
-    .card {
-      background: white;
-      padding: 25px;
-      border-radius: 20px;
-      text-align: center;
-      width: 340px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-      position: relative;
-    }
-    img {
-      width: 100%;
-      border-radius: 15px;
-      margin-bottom: 15px;
-    }
-    h1 { color: #ff4d6d; }
-    button {
-      padding: 12px 24px;
-      border: none;
-      border-radius: 30px;
-      font-size: 16px;
-      cursor: pointer;
-      margin: 10px;
-    }
-    #yes { background: #ff4d6d; color: white; }
-    #no { background: #ccc; position: absolute; }
-    .love-text {
-      position: absolute;
-      bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      color: white;
-      font-size: 26px;
-      font-weight: bold;
-      text-shadow: 0 2px 8px rgba(0,0,0,0.7);
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine Gina</title>
+    <style>
+        body {
+            background-color: #ffeef2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            overflow: hidden; /* عشان الزرار ميعملش سكرول وهو بيهرب */
+        }
+
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            text-align: center;
+            min-width: 300px;
+        }
+
+        h1 { color: #ff4d6d; }
+
+        .buttons {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        button {
+            padding: 10px 25px;
+            font-size: 18px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #yes-btn { background-color: #ff4d6d; color: white; }
+        
+        #no-btn {
+            background-color: #888;
+            color: white;
+            position: relative; /* مهم عشان يتحرك */
+        }
+
+        img { width: 150px; margin-bottom: 10px; border-radius: 10px; }
+    </style>
 </head>
 <body>
 
-  <div class="card" id="card">
-    <img src="before.jpg">
-    <h1>Gina 💕</h1>
-    <p>Will you be my Valentine?</p>
-
-    <button id="yes" onclick="yesClick()">Yes 💖</button>
-    <button id="no" onmouseover="moveNo()">No 😅</button>
-  </div>
-
-  <script>
-    function moveNo() {
-      const btn = document.getElementById("no");
-      const x = Math.random() * (window.innerWidth - 100);
-      const y = Math.random() * (window.innerHeight - 50);
-      btn.style.left = x + "px";
-      btn.style.top = y + "px";
-    }
-    function yesClick() {
-      document.getElementById("card").innerHTML = `
-        <div style="position:relative;">
-          <img src="after.jpg">
-          <div class="love-text">بحبك ❤️</div>
+    <div class="container">
+        <div id="image-box">
+            <img id="main-img" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHp1eXp3YjR3eXp3YjR3eXp3YjR3eXp3YjR3eXp3YjR3eXp3JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/c76IJLufpNwSULPk2m/giphy.gif" alt="Hearts">
         </div>
-        <h1>YAY!!! 🎉💘</h1>
-      `;
-    }
-  </script>
+        <h1 id="text">Gina ❤️<br>Will you be my Valentine?</h1>
+        
+        <div class="buttons">
+            <button id="yes-btn" onclick="sayYes()">Yes ❤️</button>
+            <button id="no-btn" onmouseover="moveNo()">No 💔</button>
+        </div>
+    </div>
+
+    <script>
+        // وظيفة تخلي الزرار يهرب
+        function moveNo() {
+            const btn = document.getElementById('no-btn');
+            // بيحسب مكان عشوائي جوه الشاشة
+            const x = Math.random() * (window.innerWidth - btn.offsetWidth);
+            const y = Math.random() * (window.innerHeight - btn.offsetHeight);
+            
+            btn.style.position = 'fixed'; // بيخليه يتحرك بحرية في الصفحة
+            btn.style.left = x + 'px';
+            btn.style.top = y + 'px';
+        }
+
+        // وظيفة لما تدوس Yes
+        function sayYes() {
+            document.getElementById('text').innerHTML = "بحبك ❤️";
+            document.getElementById('no-btn').style.display = 'none';
+            // تغيير الصورة لصورة فرحة
+            document.getElementById('main-img').src = "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHp1eXp3YjR3eXp3YjR3eXp3YjR3eXp3YjR3eXp3YjR3eXp3JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/T86bm8yU7M8Jq/giphy.gif";
+        }
+    </script>
 
 </body>
 </html>
