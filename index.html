@@ -14,9 +14,8 @@
             height: 100vh;
             margin: 0;
             font-family: 'Arial', sans-serif;
-            overflow: hidden; /* عشان الزرار ميعملش سكرول وهو بيهرب */
+            overflow: hidden;
         }
-
         .container {
             background: white;
             padding: 30px;
@@ -25,41 +24,31 @@
             text-align: center;
             min-width: 300px;
         }
-
         h1 { color: #ff4d6d; }
-
         .buttons {
             margin-top: 20px;
             display: flex;
             justify-content: center;
             gap: 20px;
         }
-
         button {
             padding: 10px 25px;
             font-size: 18px;
             border: none;
             border-radius: 10px;
             cursor: pointer;
-            transition: 0.3s;
+            transition: 0.2s;
         }
-
         #yes-btn { background-color: #ff4d6d; color: white; }
-        
-        #no-btn {
-            background-color: #888;
-            color: white;
-            position: relative; /* مهم عشان يتحرك */
-        }
-
-        img { width: 150px; margin-bottom: 10px; border-radius: 10px; }
+        #no-btn { background-color: #888; color: white; position: fixed; }
+        img { width: 250px; height: auto; margin-bottom: 10px; border-radius: 10px; }
     </style>
 </head>
 <body>
 
     <div class="container">
         <div id="image-box">
-            <img id="main-img" src=<img id="main-img" src="before.jpg" alt="Heart">">
+            <img id="main-img" src="before.jpg" alt="Valentine">
         </div>
         <h1 id="text">Gina ❤️<br>Will you be my Valentine?</h1>
         
@@ -70,24 +59,20 @@
     </div>
 
     <script>
-        // وظيفة تخلي الزرار يهرب
         function moveNo() {
             const btn = document.getElementById('no-btn');
-            // بيحسب مكان عشوائي جوه الشاشة
             const x = Math.random() * (window.innerWidth - btn.offsetWidth);
             const y = Math.random() * (window.innerHeight - btn.offsetHeight);
-            
-            btn.style.position = 'fixed'; // بيخليه يتحرك بحرية في الصفحة
             btn.style.left = x + 'px';
             btn.style.top = y + 'px';
         }
 
-        // وظيفة لما تدوس Yes
         function sayYes() {
             document.getElementById('text').innerHTML = "بحبك ❤️";
             document.getElementById('no-btn').style.display = 'none';
-            // تغيير الصورة لصورة فرحة
-            document.getElementById('main-img').src =document.getElementById('main-img').src = "after.jpg";
+            // الصورة الثانية
+            document.getElementById('main-img').src = "after.jpg";
+        }
     </script>
 
 </body>
